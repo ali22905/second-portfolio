@@ -1,3 +1,9 @@
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 import Navbar from "./scenes/Navbar";
 import Landing from "./scenes/Landing";
 import DotGroup from "./scenes/DotGroup";
@@ -11,10 +17,21 @@ import { useEffect, useState } from "react";
 import Testimonials from "./scenes/Testimonials";
 import { motion } from "framer-motion";
 
+
+
 function App() {
   const [selectedPage, setSelectedPage] = useState("home");
   const [isTopOfPage, setIsTopOfPage] = useState(true);
+  const [open, setOpen] = useState(true);
   const isDesktop = useMediaQuery("(min-width: 1060px)");
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,6 +47,21 @@ function App() {
 
   return (
     <div className="app bg-deep-blue">
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            if you are using a desktop device please click <a style={{color: '#2CBCE9'}} href="https://my-portfolio-eight-indol.vercel.app/">here</a> to go to my second portfolio that works only on desktop devices. If you are on mobile please tab cancel and ignore this message.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} autoFocus>Cancel</Button>
+        </DialogActions>
+      </Dialog>
       <Navbar
         isTopOfPage={isTopOfPage}
         selectedPage={selectedPage}
