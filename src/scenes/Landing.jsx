@@ -29,7 +29,7 @@ const Landing = ({ setSelectedPage }) => {
             alt="profile"
             style={{borderTopLeftRadius: "50%", borderTopRightRadius: '50%'}}
             className="z-10 w-full max-w-[400px] md:max-w-[600px]"
-            src="assets/ali-image.jpg"
+            src="assets/ali.jpg"
           />
         )}
       </div>
